@@ -7,12 +7,12 @@ class Logger:
         self.logger = logging.getLogger("GameLogger")
         self.logger.setLevel(logging.INFO)
         
-        # Налаштування формату логів
+
         handler = logging.FileHandler(log_file)
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         
-        # Додаємо обробник логів до логера
+
         self.logger.addHandler(handler)
 
     def log(self, message: str):

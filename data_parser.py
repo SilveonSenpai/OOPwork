@@ -10,7 +10,7 @@ class DataParser:
         try:
             return BasicCharacter(
                 name=data["name"],
-                health=data.get("health", 100),  # Базові значення, якщо API не повертає стати
+                health=data.get("health", 100),  
                 armor=data.get("armor", 20),
                 attack=data.get("attack", 30),
                 description=data.get("description", "No description available"),
@@ -37,10 +37,10 @@ class DataParser:
 
         characters = []
         for item in data_list:
-            if isinstance(item, str):  # Якщо це ім'я, робимо запит до API
+            if isinstance(item, str):  
                 character_data = APIClient.get_character_details(item)
                 characters.append(DataParser.parse_character(character_data))
-            elif isinstance(item, dict):  # Якщо це вже словник
+            elif isinstance(item, dict):  
                 characters.append(DataParser.parse_character(item))
             else:
                 print(f"Unexpected item type in character list: {type(item)}")
@@ -53,7 +53,7 @@ class DataParser:
         try:
             return BasicWeapon(
                 name=data["name"],
-                attack_bonus=data.get("attack", 10),  # Базове значення для бонусу атаки
+                attack_bonus=data.get("attack", 10),  
                 rarity=data.get("rarity", 1),
                 description=data.get("description", "No description available"),
             )
@@ -71,10 +71,10 @@ class DataParser:
 
         weapons = []
         for item in data_list:
-            if isinstance(item, str):  # Якщо це ім'я, робимо запит до API
+            if isinstance(item, str): 
                 weapon_data = APIClient.get_weapon_details(item)
                 weapons.append(DataParser.parse_weapon(weapon_data))
-            elif isinstance(item, dict):  # Якщо це вже словник
+            elif isinstance(item, dict):  
                 weapons.append(DataParser.parse_weapon(item))
             else:
                 print(f"Unexpected item type in weapon list: {type(item)}")
